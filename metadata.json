@@ -1,0 +1,6 @@
+{
+  "name": "Biên Niên Sử Olympus",
+  "description": "Trò chơi kể chuyện thần thoại Hy Lạp tương tác tựa như đang đọc sách tranh sống động với các nhân vật chuyển động nhẹ nhàng trong không gian 3D.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

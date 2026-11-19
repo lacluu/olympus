@@ -1,0 +1,1032 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-display: "Cormorant Garamond", Georgia, serif;
+    --font-body: "Lora", Georgia, serif;
+    --font-mono: "JetBrains Mono", monospace;
+  }
+
+  html,
+  body,
+  #root {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: var(--font-body);
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-prose {
+  font-family: var(--font-body);
+}
+
+.font-tabular {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Gentle living character animations (compositor-only transforms & opacity) */
+@keyframes char-breathe {
+  0%,
+  100% {
+    transform: translateY(0px) scaleY(1);
+  }
+  50% {
+    transform: translateY(-2.5px) scaleY(1.015);
+  }
+}
+
+@keyframes char-float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(0.7deg);
+  }
+}
+
+@keyframes char-sway {
+  0%,
+  100% {
+    transform: rotate(-1.5deg) translateX(0px);
+  }
+  50% {
+    transform: rotate(1.8deg) translateX(1.5px);
+  }
+}
+
+@keyframes wing-left-flutter {
+  0%,
+  100% {
+    transform: rotate(0deg) scaleX(1);
+  }
+  50% {
+    transform: rotate(-5deg) scaleX(0.97);
+  }
+}
+
+@keyframes wing-right-flutter {
+  0%,
+  100% {
+    transform: rotate(0deg) scaleX(1);
+  }
+  50% {
+    transform: rotate(5deg) scaleX(0.97);
+  }
+}
+
+@keyframes flame-flicker {
+  0%,
+  100% {
+    transform: scaleY(1) scaleX(1) skewX(0deg);
+    opacity: 0.92;
+  }
+  33% {
+    transform: scaleY(1.09) scaleX(0.95) skewX(-2deg);
+    opacity: 1;
+  }
+  66% {
+    transform: scaleY(0.94) scaleX(1.04) skewX(2deg);
+    opacity: 0.85;
+  }
+}
+
+@keyframes aura-pulse {
+  0%,
+  100% {
+    transform: scale(0.98);
+    opacity: 0.38;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.62;
+  }
+}
+
+@keyframes blink-soft {
+  0%,
+  92%,
+  100% {
+    transform: scaleY(1);
+  }
+  96% {
+    transform: scaleY(0.1);
+  }
+}
+
+@keyframes drift-slow {
+  0%,
+  100% {
+    transform: translateX(-4px) translateY(0px);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translateX(5px) translateY(-3px);
+    opacity: 0.85;
+  }
+}
+
+@keyframes hair-sway {
+  0%,
+  100% {
+    transform: rotate(-2deg) skewX(0deg);
+  }
+  50% {
+    transform: rotate(2.5deg) skewX(1.5deg);
+  }
+}
+
+@keyframes cloud-drift {
+  0%,
+  100% {
+    transform: translateX(-8px);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+}
+
+@keyframes water-ripple {
+  0%,
+  100% {
+    transform: translateX(-5px) scaleY(1);
+  }
+  50% {
+    transform: translateX(6px) scaleY(1.06);
+  }
+}
+
+@keyframes shimmer-sweep {
+  0%,
+  100% {
+    transform: translateX(-18px);
+    opacity: 0.25;
+  }
+  50% {
+    transform: translateX(18px);
+    opacity: 0.6;
+  }
+}
+
+@keyframes move-pace {
+  0%,
+  100% {
+    transform: translateX(-18px) translateY(0px);
+  }
+  25% {
+    transform: translateX(0px) translateY(-2.5px);
+  }
+  50% {
+    transform: translateX(18px) translateY(0px);
+  }
+  75% {
+    transform: translateX(0px) translateY(-2.5px);
+  }
+}
+
+@keyframes move-advance {
+  0%,
+  100% {
+    transform: translateX(0px) translateY(0px);
+  }
+  50% {
+    transform: translateX(10px) translateY(-2px);
+  }
+}
+
+@keyframes move-lunge {
+  0%,
+  100% {
+    transform: translateX(0px) translateY(0px) rotate(0deg);
+  }
+  35% {
+    transform: translateX(-4px) translateY(1px) rotate(-2deg);
+  }
+  60% {
+    transform: translateX(18px) translateY(-5px) rotate(4deg);
+  }
+  80% {
+    transform: translateX(10px) translateY(-2px) rotate(2deg);
+  }
+}
+
+@keyframes move-recoil {
+  0%,
+  100% {
+    transform: translateX(0px) rotate(0deg);
+  }
+  45% {
+    transform: translateX(-9px) rotate(-4deg);
+  }
+  65% {
+    transform: translateX(-6px) rotate(-2.5deg);
+  }
+}
+
+@keyframes move-rally {
+  0%,
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-6px) scale(1.03);
+  }
+}
+
+@keyframes gift-arc {
+  0% {
+    transform: translateX(-28px) translateY(4px) scale(0.85);
+    opacity: 0;
+  }
+  25%,
+  75% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(0px) translateY(-16px) scale(1.08);
+  }
+  100% {
+    transform: translateX(28px) translateY(4px) scale(0.85);
+    opacity: 0;
+  }
+}
+
+@keyframes boulder-fall {
+  0% {
+    transform: translateX(-24px) translateY(-24px) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.9;
+  }
+  80% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateX(28px) translateY(34px) rotate(140deg);
+    opacity: 0;
+  }
+}
+
+@keyframes lightning-flash {
+  0%,
+  70%,
+  100% {
+    opacity: 0.12;
+  }
+  74% {
+    opacity: 0.95;
+  }
+  78% {
+    opacity: 0.25;
+  }
+  82% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.15;
+  }
+}
+
+/* =====================================================================
+   CHAR_BIBLE — Character-Specific Signature Animations (Compositor-only)
+   ===================================================================== */
+
+/* CHAR-01: Zeus — Thunderbolt surge & electric sparks gathering along arm to palm */
+@keyframes zeus-bolt-surge {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+    opacity: 0.94;
+  }
+  20% {
+    transform: translateY(-2px) rotate(-2deg) scale(1.03);
+    opacity: 1;
+  }
+  40% {
+    transform: translateY(0px) rotate(1.5deg) scale(0.99);
+    opacity: 0.88;
+  }
+  65% {
+    transform: translateY(-3.5px) rotate(-3deg) scale(1.06);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(-1px) rotate(1deg) scale(1.01);
+    opacity: 0.92;
+  }
+}
+
+@keyframes zeus-spark-gather {
+  0% {
+    transform: translate(-5px, -22px) scale(0.55) rotate(-18deg);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  70% {
+    transform: translate(1px, -6px) scale(1.1) rotate(8deg);
+    opacity: 0.95;
+  }
+  100% {
+    transform: translate(4px, 2px) scale(0.4) rotate(24deg);
+    opacity: 0;
+  }
+}
+
+@keyframes zeus-palm-orb {
+  0%,
+  100% {
+    transform: scale(0.85);
+    opacity: 0.45;
+  }
+  50% {
+    transform: scale(1.32);
+    opacity: 0.95;
+  }
+}
+
+@keyframes zeus-cradle-rock {
+  0%,
+  100% {
+    transform: rotate(-2.4deg) translateY(0px);
+  }
+  50% {
+    transform: rotate(2.4deg) translateY(-1.5px);
+  }
+}
+
+/* CHAR-02: Cronus — Heavy predatory Harpe sickle wind-up & slash */
+@keyframes cronus-sickle-sweep {
+  0%,
+  100% {
+    transform: rotate(0deg) translateY(0px);
+  }
+  28% {
+    transform: rotate(-14deg) translateY(-3px);
+  }
+  42% {
+    transform: rotate(-17deg) translateY(-4px);
+  }
+  58% {
+    transform: rotate(19deg) translateY(3px);
+  }
+  74% {
+    transform: rotate(10deg) translateY(1px);
+  }
+}
+
+/* CHAR-03: Rhea — Gentle maternal cradling of the swaddled bundle */
+@keyframes rhea-cradle {
+  0%,
+  100% {
+    transform: rotate(-3deg) translateY(0px);
+  }
+  50% {
+    transform: rotate(3.2deg) translateY(-2.5px);
+  }
+}
+
+/* CHAR-04: Gaia — Living Earth orb pulse & organic vine sway */
+@keyframes gaia-orb-pulse {
+  0%,
+  100% {
+    transform: translateY(0px) scale(0.95);
+    opacity: 0.85;
+  }
+  50% {
+    transform: translateY(-6px) scale(1.12);
+    opacity: 1;
+  }
+}
+
+/* CHAR-05: Uranus — Celestial armillary rings precession & star twinkle */
+@keyframes uranus-ring-spin {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.04);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes star-twinkle {
+  0%,
+  100% {
+    transform: scale(0.8);
+    opacity: 0.45;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 1;
+  }
+}
+
+/* CHAR-06: Metis — Elixir jar swirl & rising alchemy vapor */
+@keyframes metis-elixir-swirl {
+  0%,
+  100% {
+    transform: rotate(-5deg) translateY(0px);
+  }
+  50% {
+    transform: rotate(7deg) translateY(-3px);
+  }
+}
+
+@keyframes herb-wisp-rise {
+  0% {
+    transform: translateY(2px) scale(0.65);
+    opacity: 0;
+  }
+  35% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(-14px) scale(1.25);
+    opacity: 0;
+  }
+}
+
+/* CHAR-07: Poseidon — Trident surge & spinning water vortex */
+@keyframes poseidon-trident-thrust {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  45% {
+    transform: translateY(-6px) rotate(-3.5deg);
+  }
+  70% {
+    transform: translateY(-2px) rotate(1.5deg);
+  }
+}
+
+@keyframes water-vortex-spin {
+  0% {
+    transform: rotate(0deg) scale(0.96);
+    opacity: 0.65;
+  }
+  50% {
+    transform: rotate(180deg) scale(1.08);
+    opacity: 0.95;
+  }
+  100% {
+    transform: rotate(360deg) scale(0.96);
+    opacity: 0.65;
+  }
+}
+
+/* CHAR-08: Hades — Bident poise & orbiting underworld soul wisps */
+@keyframes hades-wisp-orbit {
+  0%,
+  100% {
+    transform: translate(0px, 0px) scale(0.9);
+    opacity: 0.55;
+  }
+  33% {
+    transform: translate(6px, -8px) scale(1.15);
+    opacity: 0.92;
+  }
+  66% {
+    transform: translate(-5px, -4px) scale(1);
+    opacity: 0.7;
+  }
+}
+
+/* CHAR-09: Hera & CHAR-10: Demeter — Regal scepter poise & wheat harvest breeze */
+@keyframes hera-scepter-poise {
+  0%,
+  100% {
+    transform: rotate(-1.8deg) translateY(0px);
+  }
+  50% {
+    transform: rotate(2.2deg) translateY(-3px);
+  }
+}
+
+@keyframes demeter-wheat-breeze {
+  0%,
+  100% {
+    transform: rotate(-4deg) skewX(-1.5deg);
+  }
+  50% {
+    transform: rotate(5deg) skewX(2deg);
+  }
+}
+
+/* CHAR-12/13/14: Cyclopes — Heavy forge hammer strike & Steropes tongs spark */
+@keyframes cyclops-hammer-strike {
+  0%,
+  100% {
+    transform: rotate(0deg) translateY(0px);
+  }
+  35% {
+    transform: rotate(-22deg) translateY(-5px);
+  }
+  52% {
+    transform: rotate(-25deg) translateY(-6px);
+  }
+  66% {
+    transform: rotate(16deg) translateY(4px);
+  }
+  80% {
+    transform: rotate(8deg) translateY(1px);
+  }
+}
+
+@keyframes steropes-tongs-lift {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(-6deg);
+  }
+}
+
+/* CHAR-15/16/17: Hecatoncheires — Asynchronous boulder-heaving arms */
+@keyframes hecaton-arms-left {
+  0%,
+  100% {
+    transform: rotate(0deg) translateY(0px);
+  }
+  40% {
+    transform: rotate(-9deg) translateY(-4px);
+  }
+  70% {
+    transform: rotate(7deg) translateY(2px);
+  }
+}
+
+@keyframes hecaton-arms-right {
+  0%,
+  100% {
+    transform: rotate(0deg) translateY(0px);
+  }
+  35% {
+    transform: rotate(10deg) translateY(-5px);
+  }
+  72% {
+    transform: rotate(-7deg) translateY(2px);
+  }
+}
+
+/* CHAR-18: Campe — Undulating serpent coil, lashing fire whip, writhing snake hair */
+@keyframes campe-coil-undulate {
+  0%,
+  100% {
+    transform: scaleX(1) translateY(0px);
+  }
+  50% {
+    transform: scaleX(1.045) translateY(-2px);
+  }
+}
+
+@keyframes campe-whip-lash {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+  30% {
+    transform: rotate(-14deg) scale(0.96);
+  }
+  55% {
+    transform: rotate(18deg) scale(1.08);
+  }
+  78% {
+    transform: rotate(5deg) scale(1);
+  }
+}
+
+@keyframes serpent-hair-writhe {
+  0%,
+  100% {
+    transform: rotate(-4deg) scaleY(1);
+  }
+  50% {
+    transform: rotate(5deg) scaleY(1.05);
+  }
+}
+
+/* CHAR-19: Prometheus — Torch illumination raise */
+@keyframes prometheus-torch-raise {
+  0%,
+  100% {
+    transform: rotate(-2deg) translateY(0px);
+  }
+  50% {
+    transform: rotate(4deg) translateY(-4px);
+  }
+}
+
+/* CHAR-20: Amalthea — Gentle head graze/nod & bronze bell ring */
+@keyframes goat-head-nod {
+  0%,
+  100% {
+    transform: rotate(0deg) translateY(0px);
+  }
+  50% {
+    transform: rotate(6deg) translateY(2.5px);
+  }
+}
+
+@keyframes bell-ring {
+  0%,
+  100% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(11deg);
+  }
+}
+
+/* CHAR-21: Curetes — Ritual war-dance shield clash & spear thrust */
+@keyframes curetes-shield-clash {
+  0%,
+  100% {
+    transform: translateX(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateX(-3px) rotate(-6deg);
+  }
+  50% {
+    transform: translateX(4px) rotate(5deg);
+  }
+  75% {
+    transform: translateX(-1px) rotate(-2deg);
+  }
+}
+
+@keyframes curetes-spear-thrust {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  30% {
+    transform: translateY(-7px) rotate(-4deg);
+  }
+  55% {
+    transform: translateY(2px) rotate(5deg);
+  }
+  80% {
+    transform: translateY(-3px) rotate(-1deg);
+  }
+}
+
+.anim-breathe {
+  animation: char-breathe 4.4s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+.anim-float {
+  animation: char-float 5.2s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+.anim-sway {
+  animation: char-sway 5.6s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+.anim-hair {
+  animation: hair-sway 4.8s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+.anim-cloud {
+  animation: cloud-drift 11s ease-in-out infinite;
+}
+
+.anim-cloud-slow {
+  animation: cloud-drift 16s ease-in-out infinite reverse;
+}
+
+.anim-water {
+  animation: water-ripple 4.5s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+.anim-shimmer {
+  animation: shimmer-sweep 5.2s ease-in-out infinite;
+}
+
+.anim-wing-l {
+  animation: wing-left-flutter 3.8s ease-in-out infinite;
+  transform-origin: 120px 150px;
+}
+
+.anim-wing-r {
+  animation: wing-right-flutter 3.8s ease-in-out infinite;
+  transform-origin: 140px 150px;
+}
+
+.anim-flame {
+  animation: flame-flicker 1.9s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+.anim-aura {
+  animation: aura-pulse 4.8s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+.anim-blink {
+  animation: blink-soft 5.5s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+.anim-drift {
+  animation: drift-slow 6.5s ease-in-out infinite;
+}
+
+.anim-move-pace {
+  animation: move-pace 7.5s ease-in-out infinite;
+}
+
+.anim-move-advance {
+  animation: move-advance 4.2s ease-in-out infinite;
+}
+
+.anim-move-lunge {
+  animation: move-lunge 2.8s ease-in-out infinite;
+}
+
+.anim-move-recoil {
+  animation: move-recoil 2.8s ease-in-out infinite;
+}
+
+.anim-move-rally {
+  animation: move-rally 3.6s ease-in-out infinite;
+}
+
+.anim-gift-arc {
+  animation: gift-arc 3.6s ease-in-out infinite;
+}
+
+.anim-boulder-fall {
+  animation: boulder-fall 3.2s linear infinite;
+}
+
+.anim-lightning-flash {
+  animation: lightning-flash 4.2s ease-in-out infinite;
+}
+
+/* Character-specific animation classes */
+.anim-zeus-bolt {
+  animation: zeus-bolt-surge 2.2s ease-in-out infinite;
+  transform-origin: 24px -44px;
+}
+
+.anim-zeus-spark-1 {
+  animation: zeus-spark-gather 1.45s ease-in infinite;
+}
+
+.anim-zeus-spark-2 {
+  animation: zeus-spark-gather 1.45s ease-in 0.72s infinite;
+}
+
+.anim-zeus-palm {
+  animation: zeus-palm-orb 1.6s ease-in-out infinite;
+  transform-origin: 24px -44px;
+}
+
+.anim-zeus-cradle {
+  animation: zeus-cradle-rock 3.8s ease-in-out infinite;
+  transform-origin: 0px -14px;
+}
+
+.anim-cronus-sickle {
+  animation: cronus-sickle-sweep 3.4s cubic-bezier(0.45, 0.05, 0.25, 1) infinite;
+  transform-origin: 25px -44px;
+}
+
+.anim-rhea-cradle {
+  animation: rhea-cradle 3.6s ease-in-out infinite;
+  transform-origin: 11px -52px;
+}
+
+.anim-gaia-orb {
+  animation: gaia-orb-pulse 4s ease-in-out infinite;
+  transform-origin: -24px -64px;
+}
+
+.anim-uranus-ring {
+  animation: uranus-ring-spin 14s linear infinite;
+  transform-origin: 0px -98px;
+}
+
+.anim-star-twinkle {
+  animation: star-twinkle 2.6s ease-in-out infinite;
+}
+
+.anim-metis-elixir {
+  animation: metis-elixir-swirl 3.5s ease-in-out infinite;
+  transform-origin: 22px -50px;
+}
+
+.anim-herb-wisp {
+  animation: herb-wisp-rise 2.8s ease-out infinite;
+}
+
+.anim-poseidon-trident {
+  animation: poseidon-trident-thrust 3.2s ease-in-out infinite;
+  transform-origin: 25px -56px;
+}
+
+.anim-water-vortex {
+  animation: water-vortex-spin 5.5s linear infinite;
+  transform-origin: 25px -120px;
+}
+
+.anim-hades-wisp {
+  animation: hades-wisp-orbit 4.4s ease-in-out infinite;
+}
+
+.anim-hera-scepter {
+  animation: hera-scepter-poise 4.2s ease-in-out infinite;
+  transform-origin: 23px -52px;
+}
+
+.anim-demeter-wheat {
+  animation: demeter-wheat-breeze 3.8s ease-in-out infinite;
+  transform-origin: 22px -44px;
+}
+
+.anim-cyclops-hammer {
+  animation: cyclops-hammer-strike 2.6s cubic-bezier(0.45, 0.05, 0.25, 1) infinite;
+  transform-origin: 28px -50px;
+}
+
+.anim-steropes-tongs {
+  animation: steropes-tongs-lift 2.9s ease-in-out infinite;
+  transform-origin: 27px -50px;
+}
+
+.anim-hecaton-l {
+  animation: hecaton-arms-left 2.5s ease-in-out infinite;
+  transform-origin: -18px -60px;
+}
+
+.anim-hecaton-r {
+  animation: hecaton-arms-right 2.5s ease-in-out 0.6s infinite;
+  transform-origin: 18px -60px;
+}
+
+.anim-campe-coil {
+  animation: campe-coil-undulate 3.2s ease-in-out infinite;
+  transform-origin: 0px -10px;
+}
+
+.anim-campe-whip {
+  animation: campe-whip-lash 2.2s ease-in-out infinite;
+  transform-origin: 16px -58px;
+}
+
+.anim-serpent-hair {
+  animation: serpent-hair-writhe 2.6s ease-in-out infinite;
+  transform-origin: 0px -95px;
+}
+
+.anim-prometheus-torch {
+  animation: prometheus-torch-raise 3.6s ease-in-out infinite;
+  transform-origin: 23px -46px;
+}
+
+.anim-goat-head {
+  animation: goat-head-nod 3.4s ease-in-out infinite;
+  transform-origin: 18px -54px;
+}
+
+.anim-bell-ring {
+  animation: bell-ring 1.8s ease-in-out infinite;
+  transform-origin: 22px -42px;
+}
+
+.anim-curetes-shield {
+  animation: curetes-shield-clash 1.9s ease-in-out infinite;
+  transform-origin: -18px -56px;
+}
+
+.anim-curetes-spear {
+  animation: curetes-spear-thrust 1.9s ease-in-out 0.35s infinite;
+  transform-origin: 23px -56px;
+}
+
+@keyframes mouth-talk {
+  0%,
+  100% {
+    transform: scaleY(0.35) scaleX(0.95);
+  }
+  25% {
+    transform: scaleY(1.15) scaleX(1.06);
+  }
+  50% {
+    transform: scaleY(0.55) scaleX(0.98);
+  }
+  75% {
+    transform: scaleY(1.3) scaleX(1.08);
+  }
+}
+
+@keyframes speaking-aura {
+  0%,
+  100% {
+    transform: scale(0.97);
+    opacity: 0.32;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 0.62;
+  }
+}
+
+.anim-mouth-talk {
+  animation: mouth-talk 0.42s ease-in-out infinite;
+}
+
+.anim-speaking-aura {
+  animation: speaking-aura 1.4s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-breathe,
+  .anim-float,
+  .anim-sway,
+  .anim-hair,
+  .anim-cloud,
+  .anim-cloud-slow,
+  .anim-water,
+  .anim-shimmer,
+  .anim-wing-l,
+  .anim-wing-r,
+  .anim-flame,
+  .anim-aura,
+  .anim-blink,
+  .anim-drift,
+  .anim-move-pace,
+  .anim-move-advance,
+  .anim-move-lunge,
+  .anim-move-recoil,
+  .anim-move-rally,
+  .anim-gift-arc,
+  .anim-boulder-fall,
+  .anim-lightning-flash,
+  .anim-zeus-bolt,
+  .anim-zeus-spark-1,
+  .anim-zeus-spark-2,
+  .anim-zeus-palm,
+  .anim-zeus-cradle,
+  .anim-cronus-sickle,
+  .anim-rhea-cradle,
+  .anim-gaia-orb,
+  .anim-uranus-ring,
+  .anim-star-twinkle,
+  .anim-metis-elixir,
+  .anim-herb-wisp,
+  .anim-poseidon-trident,
+  .anim-water-vortex,
+  .anim-hades-wisp,
+  .anim-hera-scepter,
+  .anim-demeter-wheat,
+  .anim-cyclops-hammer,
+  .anim-steropes-tongs,
+  .anim-hecaton-l,
+  .anim-hecaton-r,
+  .anim-campe-coil,
+  .anim-campe-whip,
+  .anim-serpent-hair,
+  .anim-prometheus-torch,
+  .anim-goat-head,
+  .anim-bell-ring,
+  .anim-curetes-shield,
+  .anim-curetes-spear,
+  .anim-mouth-talk,
+  .anim-speaking-aura {
+    animation: none !important;
+  }
+}
+
+/* Custom subtle parchment scrollbar for reading prose */
+.parchment-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+.parchment-scroll::-webkit-scrollbar-track {
+  background: rgba(110, 90, 68, 0.08);
+}
+.parchment-scroll::-webkit-scrollbar-thumb {
+  background: rgba(110, 90, 68, 0.28);
+  border-radius: 3px;
+}
